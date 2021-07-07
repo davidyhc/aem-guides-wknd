@@ -3,8 +3,7 @@
     jcr:primaryType="sling:Folder">
     <jcr:content
         jcr:primaryType="nt:unstructured"
-        jcr:title="LA Skateparks"
-        sourcing="false">
+        jcr:title="LA Skateparks">
         <folderThumbnail/>
     </jcr:content>
 </jcr:root>
