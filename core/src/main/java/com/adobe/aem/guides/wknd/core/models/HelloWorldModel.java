@@ -50,6 +50,9 @@ public class HelloWorldModel {
 
     private String message;
 
+    @ValueMapValue(injectionStrategy=InjectionStrategy.OPTIONAL)
+    private String level;
+
     @PostConstruct
     protected void init() {
         PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
@@ -65,6 +68,10 @@ public class HelloWorldModel {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getLevel(){
+        return level;
     }
 
 }
