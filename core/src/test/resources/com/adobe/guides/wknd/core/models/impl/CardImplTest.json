@@ -1,0 +1,29 @@
+{
+    "card": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "wknd/components/content/card",
+    "title": "This is title",
+    "description":"This is description"
+    },
+    "empty":{
+        "jcr:primaryType":"nt:unstructured",
+        "sling:resourceType":"wknd/components/content/card"
+    },
+    "without-title":{
+        "jcr:primaryType":"nt:unstructured",
+        "sling:resourceType":"wknd/components/content/card",
+        "description":"This is description"
+    },
+    "without-description":{
+        "jcr:primaryType":"nt:unstructured",
+        "sling:resourceType":"wknd/components/content/card",
+        "title":"This is title"
+    },
+    "without-image":{
+        "jcr:primaryType":"nt:unstructured",
+        "sling:resourceType":"wknd/components/content/card",
+        "title":"This is title",
+        "description":"This is description"
+    }
+    
+}
