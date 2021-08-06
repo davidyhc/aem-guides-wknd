@@ -30,7 +30,7 @@ public class CreateFolderService implements Runnable {
     @ObjectClassDefinition(name="A job to create folder every hour")
     public static @interface Config{
         @AttributeDefinition(name="cron-job expression")
-        String scheduler_expression() default "*/30 * * * * ?";
+        String scheduler_expression() default "* * */1 * * ?";
 
         @AttributeDefinition(name="Concurrent Task", description="whether the job is concurrent or not")
         boolean scheduler_concurrent() default false;

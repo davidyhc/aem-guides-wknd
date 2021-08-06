@@ -32,6 +32,8 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
+import org.apache.sling.jcr.api.SlingRepository;
+
 
 @Component(property = {
 	Constants.SERVICE_DESCRIPTION + "=Move a file from one folder to another",
@@ -41,27 +43,33 @@ import com.day.cq.search.result.SearchResult;
 public class moveFileProcess implements WorkflowProcess {
 
 	private static final Logger log = LoggerFactory.getLogger(moveFileProcess.class);
+    @Reference
+    private SlingRepository repository;
+
 	@Reference
 	QueryBuilder queryBuilder;
 
 	@Override
 	public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap processArguments)
 	throws WorkflowException {
+        Session session = null;
 		// TODO Auto-generated method stub
 		log.debug("The string I got was ..." + processArguments.get("PROCESS_ARGS", "string").toString());
 		String addr = processArguments.get("PROCESS_ARGS", "string").toString();
         try {
-            Repository repository = JcrUtils.getRepository("http://localhost:4502/crx/server");
-            Session session = repository.login(new SimpleCredentials("admin","admin".toCharArray()));
+            session = repository.login(new SimpleCredentials("admin", "admin".toCharArray()));
             String payloadPath = workItem.getWorkflowData().getPayload().toString();
             log.info(payloadPath);
             Workspace workspace = session.getWorkspace();
             workspace.copy(payloadPath, addr);
+            session.save();
 
 
         } catch (RepositoryException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }finally{
+            session.logout();
         }
 
     }
