@@ -7,7 +7,7 @@
     </div>
     <h2 c>${card.title}</h2>
     <p >${card.description}</p>
-    <button>submit</button>
+    <button>${'submit' @ i18n, context='html'}</button>
     
 </div>
 <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
